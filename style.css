@@ -18,11 +18,27 @@ footer {
     background-color: cadetblue;
 }
 main div {
-    border-top: 1px solid black;
     padding: 1rem;
 }
 div.player-hand {
     border: 1px solid black;
+}
+.form-new-player {
+    display: flex;
+    justify-content: space-around;
+
+}
+.hand {
+    display: flex;
+    justify-content: center;
+}
+.hand .card {
+    border: 1px solid black;
+    background-color:goldenrod;
+    border-radius: 5px;
+    height: 6rem;
+    width: 4rem;
+    margin: 1rem;
 }
 .hidden {
     display: none;

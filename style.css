@@ -1,0 +1,29 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-columns: 1fr;
+}
+header {
+    background-color: beige;
+}
+main {
+    align-content:center;
+}
+footer {
+    background-color: cadetblue;
+}
+main div {
+    border-top: 1px solid black;
+    padding: 1rem;
+}
+div.player-hand {
+    border: 1px solid black;
+}
+.hidden {
+    display: none;
+}

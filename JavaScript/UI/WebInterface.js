@@ -4,7 +4,17 @@ class WebInterface {
     }
 
     launch() {
+        this.initializeGameBoard();
         this.addNewPlayerEvents();
+    }
+
+    initializeGameBoard() {
+        // Unhide player 1 input form
+        document.getElementById("form-player-one").classList.remove("hidden");
+
+        // Hide player 1 input form and playing area
+        document.getElementById("form-player-two").classList.add("hidden");
+        document.getElementById("playing-area").classList.add("hidden");
     }
 
     addNewPlayerEvents() {

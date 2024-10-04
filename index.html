@@ -13,12 +13,23 @@
                 <p>Player 1 name:</p>
                 <input id="input-player-one" type="text">
             </div>
-            <div id="form-player-two" class="hidden">
+            <div id="form-player-two">
                 <p>Player 2 name:</p>
                 <input id="input-player-two" type="text">
             </div>            
             <div id="playing-area" class="hidden">
-                <div id="hand-player-one">Player 1 cards</div>
+                <div id="hand-player-one">
+                    <h1>Player 1 cards</h1>
+                    <div class="hand">
+                        <script>
+                            for (var i = 0; i < 10; i++) {
+                                var cardDiv = document.createElement("div");
+                                cardDiv.textContent = i;
+                                document.getElementById("hand-player-one").appendChild(cardDiv);
+                            }
+                        </script>
+                    </div>
+                </div>
                 <div id="hand-player-two">Player 2 cards</div>
             </div>
         </main>

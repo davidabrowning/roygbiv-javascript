@@ -4,6 +4,6 @@ class Game {
     }
 
     addPlayer(p) {
-        this.players.add(p);
+        this.players.push(p);
     }
 }

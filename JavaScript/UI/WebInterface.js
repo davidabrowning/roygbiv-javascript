@@ -86,4 +86,27 @@ class WebInterface {
         let drawPile = document.querySelector("#draw-pile");
         drawPile.classList.remove("selected-card");
     }
+
+    addCardListeners(playerId, cardPosition) {
+        let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
+        card.addEventListener("mouseover", (event) => {
+            this.gameController.handleCardHover(playerId, cardPosition);
+        });
+        card.addEventListener("mouseout", (event) => {
+            this.gameController.handleCardMouseout(playerId, cardPosition);
+        });
+        card.addEventListener("click", (event) => {
+            this.gameController.handleCardClick(playerId, cardPosition);
+        });
+    }
+
+    highlightCard(playerId, cardPosition) {
+        let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
+        card.classList.add("selected-card");
+    }
+
+    unhighlightCard(playerId, cardPosition) {
+        let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
+        card.classList.remove("selected-card");
+    }
 }

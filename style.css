@@ -20,13 +20,8 @@ footer {
 main div {
     padding: 1rem;
 }
-div.player-hand {
-    border: 1px solid black;
-}
-.form-new-player {
-    display: flex;
-    justify-content: space-around;
-
+.player-name-label {
+    text-align: center;
 }
 .hand {
     display: flex;

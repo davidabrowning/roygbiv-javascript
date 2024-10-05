@@ -4,8 +4,13 @@ class GameController {
         this.game = new Game();
     }
 
-    createPlayer(name) {
-        var p = new Player(name);
-        this.game.addPlayer(p);
+    launch() {
+        // Create game board
+        this.game.players.forEach(player => {
+            this.webInterface.addPlayer(player.id, player.name);
+        });
+
+        // Deal cards
+        // Add event listeners
     }
 }

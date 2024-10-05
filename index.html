@@ -10,22 +10,6 @@
         </header>
         <main>         
             <div id="playing-area">
-                <div id="hand-player-one">
-                    <h1>Player 1 cards</h1>
-                    <div class="hand">
-                        <script>
-                            for (var i = 0; i < 10; i++) {
-                                var cardDiv = document.createElement("div");
-                                cardDiv.textContent = i;
-                                cardDiv.classList.add("card");
-                                document.getElementById("hand-player-one").querySelector(".hand").appendChild(cardDiv);
-                            }
-                        </script>
-                    </div>
-                </div>
-                <div id="hand-player-two">
-                    <h1>Player 2 cards</h1>
-                </div>
             </div>
         </main>
         <footer id="footer">
@@ -54,5 +38,5 @@
 <!-- Launch -->
  <script>    
     const gameController = new GameController();
-    gameController.startGame();
+    gameController.launch();
  </script>

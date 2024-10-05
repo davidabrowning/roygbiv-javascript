@@ -1,9 +1,5 @@
 class Game {
     constructor() {
-        this.players = [];
-    }
-
-    addPlayer(p) {
-        this.players.push(p);
+        this.players = [new Player(0, "John"), new Player(1, "Jane")];
     }
 }

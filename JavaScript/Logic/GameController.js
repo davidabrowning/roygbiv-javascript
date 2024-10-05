@@ -20,7 +20,7 @@ class GameController {
         this.game.players.forEach(player => {
             player.cards.forEach(card => {
                 let cardPosition = player.cards.indexOf(card);
-                this.webInterface.updateCard(player.id, cardPosition, card.value);
+                this.webInterface.updateCard(player.id, cardPosition, card.value, card.backgroundColor, card.textColor);
             })
         });
 
@@ -55,7 +55,7 @@ class GameController {
         this.game.isDiscardPileSelected = false;
 
         let topDrawCard = this.game.getTopDrawPileCard();
-        this.webInterface.revealDrawPile(topDrawCard.value);
+        this.webInterface.revealDrawPile(topDrawCard.value, topDrawCard.backgroundColor, topDrawCard.textColor);
     }
 
     handleDiscardPileHover() {
@@ -120,7 +120,7 @@ class GameController {
         this.game.discardPile.push(playerCurrentCard);
 
         // Add drawn card to player's hand
-        this.webInterface.updateCard(playerId, cardPosition, drawnCard.value);
+        this.webInterface.updateCard(playerId, cardPosition, drawnCard.value, drawnCard.backgroundColor, drawnCard.textColor);
 
         // Unhighlight current card
         this.webInterface.unhighlightCard(playerId, cardPosition);

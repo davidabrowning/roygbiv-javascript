@@ -58,9 +58,11 @@ class WebInterface {
         }
     }
 
-    updateCard(playerId, cardPosition, cardValue) {
+    updateCard(playerId, cardPosition, cardValue, cardBackgroundColor, cardTextColor) {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.innerText = cardValue;
+        card.style.backgroundColor = cardBackgroundColor;
+        card.style.color = cardTextColor;
     }
 
     addDrawPileListeners() {
@@ -132,15 +134,19 @@ class WebInterface {
         card.classList.remove("selected-card");
     }
 
-    revealDrawPile(cardValue) {
+    revealDrawPile(cardValue, cardBackgroundColor, cardTextColor) {
         let drawPileCard = document.querySelector("#draw-pile");
         drawPileCard.innerText = cardValue;
+        drawPileCard.style.backgroundColor = cardBackgroundColor;
+        drawPileCard.style.color = cardTextColor;
         drawPileCard.classList.add("selected-card");
     }
 
     unrevealDrawPile() {
         let drawPileCard = document.querySelector("#draw-pile");
         drawPileCard.innerText = "Draw";
+        drawPileCard.style.removeProperty("background-color");
+        drawPileCard.style.removeProperty("color");
         drawPileCard.classList.remove("selected-card");
     }
 

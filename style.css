@@ -28,15 +28,15 @@ main div {
     justify-content: center;
 }
 .card {
-    border: 3px solid gray;
-    background-color:goldenrod;
+    background-color: gray;
+    border: 5px solid gray;
     border-radius: 5px;
     height: 6rem;
     width: 4rem;
     margin: 1rem;
 }
 .selected-card {
-    border: 3px solid greenyellow;
+    border: 5px solid yellow;
 }
 .hidden {
     display: none;

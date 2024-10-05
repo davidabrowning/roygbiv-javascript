@@ -86,6 +86,29 @@ class WebInterface {
         drawPile.classList.remove("selected-card");
     }
 
+    addDiscardPileListeners() {
+        let discardPile = document.querySelector("#discard-pile");
+        discardPile.addEventListener("mouseover", (event) => {
+            this.gameController.handleDiscardPileHover();
+        });
+        discardPile.addEventListener("mouseout", (event) => {
+            this.gameController.handleDiscardPileMouseout();
+        });
+        discardPile.addEventListener("click", (event) => {
+            this.gameController.handleDiscardPileClick();
+        });
+    }
+
+    highlightDiscardPile() {
+        let discardPile = document.querySelector("#discard-pile");
+        discardPile.classList.add("selected-card");
+    }
+
+    unhighlightDiscardPile() {
+        let discardPile = document.querySelector("#discard-pile");
+        discardPile.classList.remove("selected-card");
+    }
+
     addCardListeners(playerId, cardPosition) {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.addEventListener("mouseover", (event) => {

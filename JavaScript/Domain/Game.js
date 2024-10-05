@@ -3,7 +3,8 @@ class Game {
         this.players = [new Player(0, "John"), new Player(1, "Jane")];
         this.drawPile = [];
         this.discardPile = [];
-        this.isDrawPileRevealed = false;
+        this.isDrawPileSelected = false;
+        this.isDiscardPileSelected = false;
     }
 
     dealCards() {
@@ -22,12 +23,36 @@ class Game {
     }
 
     getTopDrawPileCard() {
-        this.isDrawPileRevealed = true;
+        this.isDrawPileSelected = true;
         return this.drawPile[0];
     }
 
     removeTopDrawPileCard() {
-        this.drawPile.shift();
-        this.isDrawPileRevealed = false;
+        this.isDrawPileSelected = false;
+        return this.drawPile.shift();
+    }
+
+    getTopDiscardPileCard() {
+        return this.discardPile[0];
+    }
+
+    removeTopDiscardPileCard() {
+        this.isDiscardPileSelected = false;
+        return this.discardPile.shift();
+    }
+
+    discardPileHasCards() {
+        if (this.discardPile.length > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    toggleDiscardPileSelection() {
+        if (this.isDiscardPileSelected == true) {
+            this.isDiscardPileSelected = false;
+        } else {
+            this.isDiscardPileSelected = true;
+        }
     }
 }

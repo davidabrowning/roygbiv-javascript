@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+       <meta charset="utf-8">
+       <title>ROYGBIV Card Game</title>
+       <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header id="instructions">
+        </header>
+        <main>         
+            <div id="playing-area">
+            </div>
+        </main>
+        <footer id="footer">
+            Contact the author: https://www.linkedin.com/in/davidabrowning/
+        </footer>
+    </body>
+</html>
+
+<!---------------------->
+<!---------------------->
+<!-- JavaScript files -->
+<!---------------------->
+<!---------------------->
+
+<!-- Domain -->
+<script src="JavaScript/Domain/Card.js"></script>
+<script src="JavaScript/Domain/Player.js"></script>
+<script src="JavaScript/Domain/Game.js"></script>
+
+<!-- User interface -->
+<script src="JavaScript/UI/WebInterface.js"></script>
+
+<!-- Logic -->
+<script src="JavaScript/Logic/GameController.js"></script>
+
+<!-- Launch -->
+ <script>    
+    const gameController = new GameController();
+    gameController.launch();
+ </script>

@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-columns: 1fr;
+}
+header {
+    background-color: beige;
+}
+main {
+    align-content:center;
+}
+footer {
+    background-color: cadetblue;
+}
+main div {
+    padding: 1rem;
+}
+.player-name-label {
+    text-align: center;
+}
+.hand {
+    display: flex;
+    justify-content: center;
+}
+.card {
+    border: 3px solid gray;
+    background-color:goldenrod;
+    border-radius: 5px;
+    height: 6rem;
+    width: 4rem;
+    margin: 1rem;
+}
+.selected-card {
+    border: 3px solid greenyellow;
+}
+.hidden {
+    display: none;
+}

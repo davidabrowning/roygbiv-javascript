@@ -43,7 +43,9 @@ class GameController {
     }
 
     handleDrawPileClick() {
-        alert("Clicked draw pile.");
+        this.game.isDrawPileRevealed = true;
+        let topDrawCard = this.game.drawPile.pop();
+        this.webInterface.revealDrawPile(topDrawCard.value);
     }
 
     handleCardHover(playerId, cardPosition) {

@@ -109,4 +109,10 @@ class WebInterface {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.classList.remove("selected-card");
     }
+
+    revealDrawPile(cardValue) {
+        let drawPileCard = document.querySelector("#draw-pile");
+        drawPileCard.innerText = cardValue;
+        drawPileCard.classList.add("selected-card");
+    }
 }

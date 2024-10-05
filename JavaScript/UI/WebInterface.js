@@ -2,6 +2,10 @@ class WebInterface {
     constructor() {
     }
 
+    /**
+     * Creates the playing area for one of the players
+     * including name label and placeholder cards
+     */
     addPlayer(playerId, playerName) {
         // Create container
         let playerContainer = document.createElement("div");
@@ -24,10 +28,16 @@ class WebInterface {
         // Create empty hand
         for (let i = 0; i < 10; i++) {
             let card = document.createElement("div");
-            card.innerText = i;
+            card.setAttribute("id", "player-" + playerId + "-card-" + i);
             card.classList.add("card");
+            card.innerText = i;
             document.querySelector("#container-hand-" + playerId).appendChild(card);
         }
+    }
 
+    updateCard(playerId, cardPosition, cardValue) {
+        //alert("Updating card: " + playerId + cardPosition + cardValue);
+        let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
+        card.innerText = cardValue;
     }
 }

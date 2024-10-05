@@ -11,6 +11,16 @@ class GameController {
         });
 
         // Deal cards
+        this.game.dealCards();
+        
+        // Display cards
+        this.game.players.forEach(player => {
+            player.cards.forEach(card => {
+                let cardPosition = player.cards.indexOf(card);
+                this.webInterface.updateCard(player.id, cardPosition, card.value);
+            })
+        });
+
         // Add event listeners
     }
 }

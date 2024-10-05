@@ -72,6 +72,9 @@ class GameController {
     }
 
     handleCardHover(playerId, cardPosition) {
+        // Don't hover if draw/discard not selected
+        if (this.game.isDrawPileSelected == false && this.game.isDiscardPileSelected == false) { return; }
+
         this.webInterface.highlightCard(playerId, cardPosition);
     }
 

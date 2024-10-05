@@ -45,15 +45,14 @@
 <script src="JavaScript/Domain/Player.js"></script>
 <script src="JavaScript/Domain/Game.js"></script>
 
-<!-- Logic -->
-<script src="JavaScript/Logic/GameController.js"></script>
-
 <!-- User interface -->
 <script src="JavaScript/UI/WebInterface.js"></script>
 
+<!-- Logic -->
+<script src="JavaScript/Logic/GameController.js"></script>
+
 <!-- Launch -->
- <script>
+ <script>    
     const gameController = new GameController();
-    const webInterface = new WebInterface(gameController);
-    webInterface.launch();
+    gameController.startGame();
  </script>

@@ -1,5 +1,6 @@
 class GameController {
     constructor() {
+        this.webInterface = new WebInterface();
         this.game = new Game();
     }
 

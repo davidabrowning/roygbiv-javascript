@@ -50,6 +50,10 @@ class GameController {
         // If draw pile is already revealed, take no action
         if (this.game.isDrawPileSelected) { return; }
 
+        // Unhighlight/unselect discard pile if it happens to be highlighted
+        this.webInterface.unhighlightDiscardPile();
+        this.game.isDiscardPileSelected = false;
+
         let topDrawCard = this.game.getTopDrawPileCard();
         this.webInterface.revealDrawPile(topDrawCard.value);
     }
@@ -72,6 +76,9 @@ class GameController {
     }
 
     handleCardHover(playerId, cardPosition) {
+        // Don't hover if not this player's turn
+        if (this.game.currentPlayerNum != playerId) { return; }
+
         // Don't hover if draw/discard not selected
         if (this.game.isDrawPileSelected == false && this.game.isDiscardPileSelected == false) { return; }
 
@@ -83,38 +90,36 @@ class GameController {
     }
 
     handleCardClick(playerId, cardPosition) {
+        let drawnCard = null;   // Stores the card the player draws
+
+        // Don't do anything if not this player's turn
+        if (this.game.currentPlayerNum != playerId) { return; }
+
+        // Don't do anything if draw/discare pile not selected
+        if (this.game.isDrawPileSelected == false && this.game.isDiscardPileSelected == false) { return; }
+
         // If player has selected a card from the draw pile
         if (this.game.isDrawPileSelected) {
 
-            let drawnCard = this.game.removeTopDrawPileCard();
-
-            // Unreveal the draw pile
+            // Unreveal the draw pile and set drawnCard
             this.webInterface.unrevealDrawPile();
-
-            // Discard player's current card
-            let playerCurrentCard = this.game.players[playerId].cards[cardPosition];
-            this.webInterface.addToDiscardPile(playerCurrentCard.value);
-            this.game.discardPile.push(playerCurrentCard);
-
-            // Add drawn card to player's hand
-            this.webInterface.updateCard(playerId, cardPosition, drawnCard.value);
+            drawnCard = this.game.removeTopDrawPileCard();
         }
 
         // If player has selected a card from the discard pile
         if (this.game.isDiscardPileSelected) {
 
-            let drawnCard = this.game.removeTopDiscardPileCard();
-
-            // Unhighlight the discard pile
+            // Unhighlight the discard pile and set drawnCard
             this.webInterface.unhighlightDiscardPile();
-
-            // Discard player's current card
-            let playerCurrentCard = this.game.players[playerId].cards[cardPosition];
-            this.webInterface.addToDiscardPile(playerCurrentCard.value);
-            this.game.discardPile.push(playerCurrentCard);
-            
-            // Add drawn card to player's hand
-            this.webInterface.updateCard(playerId, cardPosition, drawnCard.value);
+            drawnCard = this.game.removeTopDiscardPileCard();
         }
+
+        // Discard player's current card
+        let playerCurrentCard = this.game.players[playerId].cards[cardPosition];
+        this.webInterface.addToDiscardPile(playerCurrentCard.value);
+        this.game.discardPile.push(playerCurrentCard);
+
+        // Add drawn card to player's hand
+        this.webInterface.updateCard(playerId, cardPosition, drawnCard.value);        
     }
 }

@@ -1,5 +1,7 @@
 class Game {
     constructor() {
+        this.currentTurn = 0;
+        this.currentPlayerNum = 0;
         this.players = [new Player(0, "John"), new Player(1, "Jane")];
         this.drawPile = [];
         this.discardPile = [];

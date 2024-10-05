@@ -29,14 +29,16 @@ main div {
 }
 .card {
     background-color: gray;
-    border: 5px solid gray;
-    border-radius: 5px;
+    border: 3px solid gray;
+    border-radius: 15px;
     height: 6rem;
     width: 4rem;
     margin: 1rem;
+    align-content: center;
+    text-align: center;
 }
 .selected-card {
-    border: 5px solid yellow;
+    border: 3px solid black;
 }
 .hidden {
     display: none;

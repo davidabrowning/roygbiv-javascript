@@ -116,7 +116,7 @@ class GameController {
 
         // Discard player's current card
         let playerCurrentCard = this.game.players[playerId].cards[cardPosition];
-        this.webInterface.addToDiscardPile(playerCurrentCard.value);
+        this.webInterface.addToDiscardPile(playerCurrentCard.value, playerCurrentCard.backgroundColor, playerCurrentCard.textColor);
         this.game.discardPile.push(playerCurrentCard);
 
         // Add drawn card to player's hand
@@ -124,6 +124,11 @@ class GameController {
 
         // Unhighlight current card
         this.webInterface.unhighlightCard(playerId, cardPosition);
+
+        // Check for victory
+        if (this.game.checkForVictory(playerId)) {
+            alert("ROYGBIV!");
+        }
         
         // Advance turn
         this.game.advanceTurn();

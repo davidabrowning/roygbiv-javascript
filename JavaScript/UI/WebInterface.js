@@ -39,7 +39,7 @@ class WebInterface {
         let nameLabel = document.createElement("h1");
         nameLabel.setAttribute("id", "name-label-player-" + playerId);
         nameLabel.classList.add("player-name-label");
-        nameLabel.innerText = playerName + " (" + playerId + ")";
+        nameLabel.innerText = playerName;
         document.querySelector("#container-player-" + playerId).appendChild(nameLabel);
 
         // Create hand container
@@ -150,8 +150,10 @@ class WebInterface {
         drawPileCard.classList.remove("selected-card");
     }
 
-    addToDiscardPile(cardValue) {
+    addToDiscardPile(cardValue, cardBackgroundColor, cardTextColor) {
         let discardPileCard = document.querySelector("#discard-pile");
         discardPileCard.innerText = cardValue;
+        discardPileCard.style.backgroundColor = cardBackgroundColor;
+        discardPileCard.style.color = cardTextColor;
     }
 }

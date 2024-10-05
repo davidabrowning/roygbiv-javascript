@@ -2,7 +2,7 @@ class Game {
     constructor() {
         this.currentTurn = 0;
         this.currentPlayerNum = 0;
-        this.players = [new Player(0, "John"), new Player(1, "Jane")];
+        this.players = [new Player(0, "Player 1"), new Player(1, "Player 2")];
         this.drawPile = [];
         this.discardPile = [];
         this.isDrawPileSelected = false;
@@ -62,6 +62,7 @@ class Game {
     advanceTurn() {
         this.currentTurn++;
         this.currentPlayerNum = this.currentTurn % this.players.length;
+        alert("Top discard is " + this.discardPile[0].value);
     }
 
     shuffle(cardArray) {
@@ -74,7 +75,23 @@ class Game {
             let tempCardDouble = rand * tempArray.length;
             let tempCardNum = parseInt(tempCardDouble);
             cardArray[i] = tempArray[tempCardNum];
+            tempArray.splice(tempCardNum, 1);
         }
         return cardArray;
+    }
+
+    checkForVictory(playerId) {
+        let cards = this.players[playerId].cards;
+        let allCardsInOrder = true;
+        for (let i = 0; i < cards.length; i++) {
+
+            // Don't check the very first item
+            if (i == 0) { continue; }
+
+            if (cards[i-1].value > cards[i].value) {
+                allCardsInOrder = false;
+            }
+        }
+        return allCardsInOrder;
     }
 }

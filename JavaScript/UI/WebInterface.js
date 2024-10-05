@@ -1,5 +1,6 @@
 class WebInterface {
-    constructor() {
+    constructor(gameController) {
+        this.gameController = gameController;
     }
 
     addDrawAndDiscardPiles() {
@@ -61,5 +62,28 @@ class WebInterface {
         //alert("Updating card: " + playerId + cardPosition + cardValue);
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.innerText = cardValue;
+    }
+
+    addDrawPileListeners() {
+        let drawPile = document.querySelector("#draw-pile");
+        drawPile.addEventListener("mouseover", (event) => {
+            this.gameController.handleDrawPileHover();
+        });
+        drawPile.addEventListener("mouseout", (event) => {
+            this.gameController.handleDrawPileMouseout();
+        });
+        drawPile.addEventListener("click", (event) => {
+            this.gameController.handleDrawPileClick();
+        });
+    }
+
+    highlightDrawPile() {
+        let drawPile = document.querySelector("#draw-pile");
+        drawPile.classList.add("selected-card");
+    }
+
+    unhighlightDrawPile() {
+        let drawPile = document.querySelector("#draw-pile");
+        drawPile.classList.remove("selected-card");
     }
 }

@@ -1,6 +1,6 @@
 class GameController {
     constructor() {
-        this.webInterface = new WebInterface();
+        this.webInterface = new WebInterface(this);
         this.game = new Game();
     }
 
@@ -25,5 +25,18 @@ class GameController {
         });
 
         // Add event listeners
+        this.webInterface.addDrawPileListeners();
+    }
+
+    handleDrawPileHover() {
+        this.webInterface.highlightDrawPile();
+    }
+
+    handleDrawPileMouseout() {
+        this.webInterface.unhighlightDrawPile();
+    }
+
+    handleDrawPileClick() {
+        alert("Clicked draw pile.");
     }
 }

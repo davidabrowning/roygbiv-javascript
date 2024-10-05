@@ -120,6 +120,12 @@ class GameController {
         this.game.discardPile.push(playerCurrentCard);
 
         // Add drawn card to player's hand
-        this.webInterface.updateCard(playerId, cardPosition, drawnCard.value);        
+        this.webInterface.updateCard(playerId, cardPosition, drawnCard.value);
+
+        // Unhighlight current card
+        this.webInterface.unhighlightCard(playerId, cardPosition);
+        
+        // Advance turn
+        this.game.advanceTurn();
     }
 }

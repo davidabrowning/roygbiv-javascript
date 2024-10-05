@@ -57,4 +57,9 @@ class Game {
             this.isDiscardPileSelected = true;
         }
     }
+
+    advanceTurn() {
+        this.currentTurn++;
+        this.currentPlayerNum = this.currentTurn % this.players.length;
+    }
 }

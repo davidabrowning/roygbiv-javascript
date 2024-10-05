@@ -10,10 +10,11 @@ class Game {
     }
 
     dealCards() {
-        // Add cards to draw pile
+        // Add cards to discard pile
         for (let i = 0; i < 60; i++) {
             this.drawPile.push(new Card(i));
         }
+        this.drawPile = this.shuffle(this.drawPile);
 
         // Deal cards to players
         this.players.forEach(player => {
@@ -61,5 +62,19 @@ class Game {
     advanceTurn() {
         this.currentTurn++;
         this.currentPlayerNum = this.currentTurn % this.players.length;
+    }
+
+    shuffle(cardArray) {
+        let tempArray = [];
+        cardArray.forEach(card => {
+            tempArray.push(card);
+        });
+        for (let i = 0; i < cardArray.length; i++) {
+            let rand = Math.random();
+            let tempCardDouble = rand * tempArray.length;
+            let tempCardNum = parseInt(tempCardDouble);
+            cardArray[i] = tempArray[tempCardNum];
+        }
+        return cardArray;
     }
 }

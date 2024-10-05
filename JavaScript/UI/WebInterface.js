@@ -59,7 +59,6 @@ class WebInterface {
     }
 
     updateCard(playerId, cardPosition, cardValue) {
-        //alert("Updating card: " + playerId + cardPosition + cardValue);
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.innerText = cardValue;
     }
@@ -114,5 +113,16 @@ class WebInterface {
         let drawPileCard = document.querySelector("#draw-pile");
         drawPileCard.innerText = cardValue;
         drawPileCard.classList.add("selected-card");
+    }
+
+    unrevealDrawPile() {
+        let drawPileCard = document.querySelector("#draw-pile");
+        drawPileCard.innerText = "Draw";
+        drawPileCard.classList.remove("selected-card");
+    }
+
+    addToDiscardPile(cardValue) {
+        let discardPileCard = document.querySelector("#discard-pile");
+        discardPileCard.innerText = cardValue;
     }
 }

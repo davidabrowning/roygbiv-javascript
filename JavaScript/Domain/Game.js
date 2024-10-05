@@ -20,4 +20,14 @@ class Game {
             }            
         });
     }
+
+    getTopDrawPileCard() {
+        this.isDrawPileRevealed = true;
+        return this.drawPile[0];
+    }
+
+    removeTopDrawPileCard() {
+        this.drawPile.shift();
+        this.isDrawPileRevealed = false;
+    }
 }

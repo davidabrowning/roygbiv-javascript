@@ -27,7 +27,7 @@ main div {
     display: flex;
     justify-content: center;
 }
-.hand .card {
+.card {
     border: 1px solid black;
     background-color:goldenrod;
     border-radius: 5px;

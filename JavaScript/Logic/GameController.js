@@ -5,7 +5,10 @@ class GameController {
     }
 
     launch() {
-        // Create game board
+        // Create game board: add draw pile, discard pile
+        this.webInterface.addDrawAndDiscardPiles();
+
+        // Create game board: add players
         this.game.players.forEach(player => {
             this.webInterface.addPlayer(player.id, player.name);
         });

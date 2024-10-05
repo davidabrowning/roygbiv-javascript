@@ -2,6 +2,28 @@ class WebInterface {
     constructor() {
     }
 
+    addDrawAndDiscardPiles() {
+        // Create container
+        let pileContainer = document.createElement("div");
+        pileContainer.setAttribute("id", "container-draw-discard-piles");
+        pileContainer.classList.add("hand");
+        document.querySelector("#playing-area").appendChild(pileContainer);
+
+        // Create empty draw pile
+        let drawPile = document.createElement("div");
+        drawPile.setAttribute("id", "draw-pile");
+        drawPile.classList.add("card");
+        drawPile.innerText = "Draw";
+        document.querySelector("#container-draw-discard-piles").appendChild(drawPile);
+
+        // Create empty discard pile
+        let discardPile = document.createElement("div");
+        discardPile.setAttribute("id", "discard-pile");
+        discardPile.classList.add("card");
+        discardPile.innerText = "Discard";
+        document.querySelector("#container-draw-discard-piles").appendChild(discardPile);
+    }
+
     /**
      * Creates the playing area for one of the players
      * including name label and placeholder cards

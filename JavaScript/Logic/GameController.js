@@ -39,13 +39,16 @@ class GameController {
     }
 
     handleDrawPileMouseout() {
+        // If draw pile is already revealed, do not unhighlight
+        if (this.game.isDrawPileRevealed) { return; }
+        
         this.webInterface.unhighlightDrawPile();
     }
 
     handleDrawPileClick() {
         // If draw pile is already revealed, take no action
         if (this.game.isDrawPileRevealed) { return; }
-        
+
         this.game.isDrawPileRevealed = true;
         let topDrawCard = this.game.drawPile.pop();
         this.webInterface.revealDrawPile(topDrawCard.value);

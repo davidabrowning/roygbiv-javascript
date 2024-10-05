@@ -43,6 +43,9 @@ class GameController {
     }
 
     handleDrawPileClick() {
+        // If draw pile is already revealed, take no action
+        if (this.game.isDrawPileRevealed) { return; }
+        
         this.game.isDrawPileRevealed = true;
         let topDrawCard = this.game.drawPile.pop();
         this.webInterface.revealDrawPile(topDrawCard.value);

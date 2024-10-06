@@ -47,6 +47,7 @@ span.material-symbols-outlined {
     margin: 2rem;
     padding: 2rem;
     padding-top: 1rem;
+    padding-bottom: 4rem;
 }
 #instructions #btn-close-container {
     text-align: right;
@@ -66,21 +67,29 @@ span.material-symbols-outlined {
     margin-right: 3rem;
 }
 #instructions .hand {
+    margin-top: 0rem;
     padding: 1rem;
 }
 #container-draw-discard-piles {
-    margin: 3rem;
+    margin-top: 1rem;
 }
 .hand {
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
+}
+#draw-pile {
+    margin-right: 5vw;
+}
+#discard-pile {
+    margin-left: 5vw;
 }
 .card {
     box-sizing: border-box;
     background-color: lightgray;
     border: 0px solid lightgray;
     border-radius: 0px;
-    height: 9vw;
+    height: 12vw;
     width: 9vw;
     margin: 0.1rem;
     align-content: center;

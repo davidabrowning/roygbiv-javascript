@@ -36,12 +36,13 @@ class Game {
     }
 
     getTopDiscardPileCard() {
-        return this.discardPile[0];
+        let maxIndex = this.discardPile.length;
+        return this.discardPile[maxIndex - 1];
     }
 
     removeTopDiscardPileCard() {
         this.isDiscardPileSelected = false;
-        return this.discardPile.shift();
+        return this.discardPile.pop();
     }
 
     discardPileHasCards() {

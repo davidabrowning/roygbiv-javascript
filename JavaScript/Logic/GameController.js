@@ -59,6 +59,9 @@ class GameController {
     }
 
     handleDiscardPileHover() {
+        // If draw pile is selected, take no action
+        if (this.game.isDrawPileSelected == true) { return; }
+
         if (this.game.discardPileHasCards()) {
             this.webInterface.highlightDiscardPile();
         }
@@ -72,6 +75,9 @@ class GameController {
     }
 
     handleDiscardPileClick() {
+        // If draw pile is selected, take no action
+        if (this.game.isDrawPileSelected == true) { return; }
+
         this.game.toggleDiscardPileSelection();
     }
 

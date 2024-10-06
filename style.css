@@ -11,7 +11,7 @@ body {
 }
 header {
     background-color: white;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid lightgray;
     align-content: center;
     text-align: right;
     padding: 1rem;
@@ -20,8 +20,9 @@ main {
     align-content:center;
 }
 footer {
+    display: none;
     background-color: white;
-    border-top: 1px solid gray;
+    border-top: 1px solid lightgray;
     align-content: center;
     text-align: center;
 }
@@ -41,8 +42,8 @@ main div {
 }
 .card {
     box-sizing: border-box;
-    background-color: gray;
-    border: 0px solid gray;
+    background-color: lightgray;
+    border: 0px solid lightgray;
     border-radius: 0px;
     height: 9vw;
     width: 9vw;

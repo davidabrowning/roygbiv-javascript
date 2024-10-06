@@ -121,6 +121,7 @@ class GameController {
 
         // Add drawn card to player's hand
         this.webInterface.updateCard(playerId, cardPosition, drawnCard.value, drawnCard.backgroundColor, drawnCard.textColor);
+        this.game.players[playerId].cards[cardPosition] = drawnCard;
 
         // Unhighlight current card
         this.webInterface.unhighlightCard(playerId, cardPosition);

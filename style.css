@@ -17,7 +17,7 @@ header {
     padding: 1rem;
 }
 main {
-    align-content:center;
+    align-content: center;
 }
 footer {
     display: none;
@@ -33,8 +33,43 @@ main div {
     display: none;
     text-align: center;
 }
+span.material-symbols-outlined {
+    font-size: 200%;
+}
+#instructions-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#instructions {
+    border: 1px solid lightgray;
+    width: 33vw;
+    margin: 2rem;
+    padding: 2rem;
+    padding-top: 1rem;
+}
+#instructions #btn-close-container {
+    text-align: right;
+}
+#instructions #btn-close {
+    color: black;
+}
+#instructions h1 {
+    margin-bottom: 1rem;
+}
+#instructions p.subtitle {
+    font-weight: bold;
+}
+#instructions li {
+    margin: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+#instructions .hand {
+    padding: 1rem;
+}
 #container-draw-discard-piles {
-    margin-bottom: 3rem;
+    margin: 3rem;
 }
 .hand {
     display: flex;

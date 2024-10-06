@@ -3,6 +3,59 @@ class WebInterface {
         this.gameController = gameController;
     }
 
+    populateInstructionMenu() {
+        let winningHand = [ 5, 18, 25, 28, 30, 35, 42, 47, 52, 57 ];
+        let progressHand = [ 1, 38, 55, 8, 50, 17, 11, 53, 12, 44 ];
+        let winningHandDiv = document.querySelector("#example-winning-hand");
+        let progressHandDiv = document.querySelector("#example-progress-hand");
+        winningHand.forEach(cardValue => {
+            let card = new Card(cardValue);
+            let cardDiv = document.createElement("div");
+            cardDiv.classList.add("card");
+            cardDiv.innerText = card.value;
+            cardDiv.style.backgroundColor = card.backgroundColor;
+            cardDiv.style.color = card.textColor;
+            cardDiv.style.width = "10%";
+            cardDiv.style.height = "5rem";
+            winningHandDiv.appendChild(cardDiv);       
+        });
+        progressHand.forEach(cardValue => {
+            let card = new Card(cardValue);
+            let cardDiv = document.createElement("div");
+            cardDiv.classList.add("card");
+            cardDiv.innerText = card.value;
+            cardDiv.style.backgroundColor = card.backgroundColor;
+            cardDiv.style.color = card.textColor;
+            cardDiv.style.width = "10%";
+            cardDiv.style.height = "5rem";
+            progressHandDiv.appendChild(cardDiv);       
+        });
+    }
+
+    addMenuListeners() {
+        let infoButton = document.querySelector("#btn-info");
+        infoButton.addEventListener("click", (event) => {
+            this.toggleInfoDisplay();
+        })
+        let infoCloseButton = document.querySelector("#btn-close");
+        infoCloseButton.addEventListener("click", (event) => {
+            this.toggleInfoDisplay();
+        })
+    }
+
+    toggleInfoDisplay() {
+        let infoDiv = document.querySelector("#instructions");
+        let playingAreaDiv = document.querySelector("#playing-area");
+        if (infoDiv.classList.contains("hidden")) {
+            infoDiv.classList.remove("hidden");
+            playingAreaDiv.classList.add("hidden");
+        } else {
+            infoDiv.classList.add("hidden");
+            playingAreaDiv.classList.remove("hidden");
+        }
+        
+    }
+
     addDrawAndDiscardPiles() {
         // Create container
         let pileContainer = document.createElement("div");

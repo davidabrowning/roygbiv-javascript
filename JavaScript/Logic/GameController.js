@@ -5,6 +5,9 @@ class GameController {
     }
 
     launch() {
+        // Populate instruction menu
+        this.webInterface.populateInstructionMenu();
+
         // Create game board: add draw pile, discard pile
         this.webInterface.addDrawAndDiscardPiles();
 
@@ -25,6 +28,7 @@ class GameController {
         });
 
         // Add event listeners
+        this.webInterface.addMenuListeners();
         this.webInterface.addDrawPileListeners();
         this.webInterface.addDiscardPileListeners();
         this.game.players.forEach(player => {

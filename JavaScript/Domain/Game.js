@@ -62,7 +62,6 @@ class Game {
     advanceTurn() {
         this.currentTurn++;
         this.currentPlayerNum = this.currentTurn % this.players.length;
-        alert("Top discard is " + this.discardPile[0].value);
     }
 
     shuffle(cardArray) {

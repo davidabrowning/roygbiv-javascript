@@ -209,4 +209,11 @@ class WebInterface {
         discardPileCard.style.backgroundColor = cardBackgroundColor;
         discardPileCard.style.color = cardTextColor;
     }
+
+    highlightHandForVictory(playerId) {
+        let victoriousCards = document.querySelectorAll("#container-hand-" + playerId + " .card");
+        victoriousCards.forEach(cardDiv => {
+            cardDiv.style.border = "5px solid yellow";
+        });
+    }
 }

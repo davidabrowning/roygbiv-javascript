@@ -4,16 +4,40 @@
        <meta charset="utf-8">
        <title>ROYGBIV Card Game</title>
        <link rel="stylesheet" href="style.css">
+
+       <!-- for menu icons -->
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body>
-        <header id="instructions">
+        <header id="header">
+            <a href="#"><span id="btn-info" class="material-symbols-outlined">info</span></a>
+            <a href="https://www.linkedin.com/in/davidabrowning" target="_blank"><span class="material-symbols-outlined">alternate_email</span></a>
         </header>
-        <main>         
+        <main>
+            <div id="instructions-container">
+                <div id="instructions" class="hidden">
+                    <div id="btn-close-container">
+                        <a href="#"><span id="btn-close" class="material-symbols-outlined">close</span></a>
+                    </div>
+                    <h1>How to play</h1>
+                    <p class="subtitle">Sort your 10-card hand in ascending order.</p>
+                    <ol>
+                        <li>Choose who plays as player 1 (top row) and player 2 (bottom row).</li>
+                        <li>Each player to swap the positions of two cards within their hand.</li>
+                        <li>Take turns drawing a card from either the draw or discard pile and replacing a card in your hand with it.</li>
+                    </ol>
+                    <p class="subtitle">Example winning hand:</p>
+                    <div id="example-winning-hand" class="hand"></div>
+                    <p class="subtitle">Example hand still in progress:</p>
+                    <div id="example-progress-hand" class="hand"></div>
+                    <p>Get your cards in order to claim victory and ROYGBIV!</p>
+                </div>
+            </div>         
             <div id="playing-area">
             </div>
         </main>
         <footer id="footer">
-            Contact the author: https://www.linkedin.com/in/davidabrowning/
+            <a href="https://www.linkedin.com/in/davidabrowning/">David Browning</a>
         </footer>
     </body>
 </html>

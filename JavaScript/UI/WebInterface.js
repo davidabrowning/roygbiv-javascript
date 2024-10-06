@@ -3,6 +3,59 @@ class WebInterface {
         this.gameController = gameController;
     }
 
+    populateInstructionMenu() {
+        let winningHand = [ 5, 18, 25, 28, 30, 35, 42, 47, 52, 57 ];
+        let progressHand = [ 1, 38, 55, 8, 50, 17, 11, 53, 12, 44 ];
+        let winningHandDiv = document.querySelector("#example-winning-hand");
+        let progressHandDiv = document.querySelector("#example-progress-hand");
+        winningHand.forEach(cardValue => {
+            let card = new Card(cardValue);
+            let cardDiv = document.createElement("div");
+            cardDiv.classList.add("card");
+            cardDiv.innerText = card.value;
+            cardDiv.style.backgroundColor = card.backgroundColor;
+            cardDiv.style.color = card.textColor;
+            cardDiv.style.width = "10%";
+            cardDiv.style.height = "5rem";
+            winningHandDiv.appendChild(cardDiv);       
+        });
+        progressHand.forEach(cardValue => {
+            let card = new Card(cardValue);
+            let cardDiv = document.createElement("div");
+            cardDiv.classList.add("card");
+            cardDiv.innerText = card.value;
+            cardDiv.style.backgroundColor = card.backgroundColor;
+            cardDiv.style.color = card.textColor;
+            cardDiv.style.width = "10%";
+            cardDiv.style.height = "5rem";
+            progressHandDiv.appendChild(cardDiv);       
+        });
+    }
+
+    addMenuListeners() {
+        let infoButton = document.querySelector("#btn-info");
+        infoButton.addEventListener("click", (event) => {
+            this.toggleInfoDisplay();
+        })
+        let infoCloseButton = document.querySelector("#btn-close");
+        infoCloseButton.addEventListener("click", (event) => {
+            this.toggleInfoDisplay();
+        })
+    }
+
+    toggleInfoDisplay() {
+        let infoDiv = document.querySelector("#instructions");
+        let playingAreaDiv = document.querySelector("#playing-area");
+        if (infoDiv.classList.contains("hidden")) {
+            infoDiv.classList.remove("hidden");
+            playingAreaDiv.classList.add("hidden");
+        } else {
+            infoDiv.classList.add("hidden");
+            playingAreaDiv.classList.remove("hidden");
+        }
+        
+    }
+
     addDrawAndDiscardPiles() {
         // Create container
         let pileContainer = document.createElement("div");
@@ -39,7 +92,7 @@ class WebInterface {
         let nameLabel = document.createElement("h1");
         nameLabel.setAttribute("id", "name-label-player-" + playerId);
         nameLabel.classList.add("player-name-label");
-        nameLabel.innerText = playerName + " (" + playerId + ")";
+        nameLabel.innerText = playerName;
         document.querySelector("#container-player-" + playerId).appendChild(nameLabel);
 
         // Create hand container
@@ -58,10 +111,11 @@ class WebInterface {
         }
     }
 
-    updateCard(playerId, cardPosition, cardValue) {
-        //alert("Updating card: " + playerId + cardPosition + cardValue);
+    updateCard(playerId, cardPosition, cardValue, cardBackgroundColor, cardTextColor) {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.innerText = cardValue;
+        card.style.backgroundColor = cardBackgroundColor;
+        card.style.color = cardTextColor;
     }
 
     addDrawPileListeners() {
@@ -87,6 +141,29 @@ class WebInterface {
         drawPile.classList.remove("selected-card");
     }
 
+    addDiscardPileListeners() {
+        let discardPile = document.querySelector("#discard-pile");
+        discardPile.addEventListener("mouseover", (event) => {
+            this.gameController.handleDiscardPileHover();
+        });
+        discardPile.addEventListener("mouseout", (event) => {
+            this.gameController.handleDiscardPileMouseout();
+        });
+        discardPile.addEventListener("click", (event) => {
+            this.gameController.handleDiscardPileClick();
+        });
+    }
+
+    highlightDiscardPile() {
+        let discardPile = document.querySelector("#discard-pile");
+        discardPile.classList.add("selected-card");
+    }
+
+    unhighlightDiscardPile() {
+        let discardPile = document.querySelector("#discard-pile");
+        discardPile.classList.remove("selected-card");
+    }
+
     addCardListeners(playerId, cardPosition) {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.addEventListener("mouseover", (event) => {
@@ -108,5 +185,28 @@ class WebInterface {
     unhighlightCard(playerId, cardPosition) {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
         card.classList.remove("selected-card");
+    }
+
+    revealDrawPile(cardValue, cardBackgroundColor, cardTextColor) {
+        let drawPileCard = document.querySelector("#draw-pile");
+        drawPileCard.innerText = cardValue;
+        drawPileCard.style.backgroundColor = cardBackgroundColor;
+        drawPileCard.style.color = cardTextColor;
+        drawPileCard.classList.add("selected-card");
+    }
+
+    unrevealDrawPile() {
+        let drawPileCard = document.querySelector("#draw-pile");
+        drawPileCard.innerText = "Draw";
+        drawPileCard.style.removeProperty("background-color");
+        drawPileCard.style.removeProperty("color");
+        drawPileCard.classList.remove("selected-card");
+    }
+
+    addToDiscardPile(cardValue, cardBackgroundColor, cardTextColor) {
+        let discardPileCard = document.querySelector("#discard-pile");
+        discardPileCard.innerText = cardValue;
+        discardPileCard.style.backgroundColor = cardBackgroundColor;
+        discardPileCard.style.color = cardTextColor;
     }
 }

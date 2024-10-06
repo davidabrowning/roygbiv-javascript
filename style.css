@@ -1,42 +1,101 @@
 * {
     margin: 0px;
     padding: 0px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 body {
     display: grid;
     height: 100vh;
-    grid-template-rows: 1fr 5fr 1fr;
+    grid-template-rows: 1fr 15fr 1fr;
     grid-template-columns: 1fr;
 }
 header {
-    background-color: beige;
-}
-main {
-    align-content:center;
-}
-footer {
-    background-color: cadetblue;
-}
-main div {
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    align-content: center;
+    text-align: right;
     padding: 1rem;
 }
-.player-name-label {
+main {
+    align-content: center;
+}
+footer {
+    display: none;
+    background-color: white;
+    border-top: 1px solid lightgray;
+    align-content: center;
     text-align: center;
+}
+main div {
+    padding: 0rem;
+}
+.player-name-label {
+    display: none;
+    text-align: center;
+}
+span.material-symbols-outlined {
+    font-size: 200%;
+}
+#instructions-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+#instructions {
+    border: 1px solid lightgray;
+    width: 33vw;
+    margin: 2rem;
+    padding: 2rem;
+    padding-top: 1rem;
+}
+#instructions #btn-close-container {
+    text-align: right;
+}
+#instructions #btn-close {
+    color: black;
+}
+#instructions h1 {
+    margin-bottom: 1rem;
+}
+#instructions p.subtitle {
+    font-weight: bold;
+}
+#instructions li {
+    margin: 1rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+#instructions .hand {
+    padding: 1rem;
+}
+#container-draw-discard-piles {
+    margin: 3rem;
 }
 .hand {
     display: flex;
     justify-content: center;
 }
 .card {
-    border: 3px solid gray;
-    background-color:goldenrod;
-    border-radius: 5px;
-    height: 6rem;
-    width: 4rem;
-    margin: 1rem;
+    box-sizing: border-box;
+    background-color: lightgray;
+    border: 0px solid lightgray;
+    border-radius: 0px;
+    height: 9vw;
+    width: 9vw;
+    margin: 0.1rem;
+    align-content: center;
+    text-align: center;
 }
 .selected-card {
-    border: 3px solid greenyellow;
+    border: 3px solid black;
+}
+header a {
+    color: black;
+}
+footer a {
+    text-decoration: none;
+    color: black;
+    font-size: 0.75rem;
 }
 .hidden {
     display: none;

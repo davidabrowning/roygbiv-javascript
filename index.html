@@ -39,36 +39,34 @@
         <footer id="footer">
             <a href="https://www.linkedin.com/in/davidabrowning/">David Browning</a>
         </footer>
+
+        <!--------------- JavaScript files --------------->
+
+        <!-- Domain -->
+        <script src="src/js/domain/Card.js"></script>
+        <script src="src/js/domain/Player.js"></script>
+        <script src="src/js/domain/Game.js"></script>
+        <script src="src/js/domain/Card.test.js"></script>
+
+        <!-- User interface -->
+        <script src="src/js/ui/WebInterface.js"></script>
+
+        <!-- Logic -->
+        <script src="src/js/logic/GameController.js"></script>
+
+        <!-- Launch -->
+        <script>    
+            const gameController = new GameController();
+            gameController.launch();
+        </script>
+
+        <!-- Test files -->
+        <script src="test/TestRunner.js"></script>
+        <script>
+            const testRunner = new TestRunner();
+            testRunner.runTests();
+        </script>
+
+        <!--------------- /JavaScript files --------------->
     </body>
 </html>
-
-<!---------------------->
-<!---------------------->
-<!-- JavaScript files -->
-<!---------------------->
-<!---------------------->
-
-<!-- Domain -->
-<script src="src/js/domain/Card.js"></script>
-<script src="src/js/domain/Player.js"></script>
-<script src="src/js/domain/Game.js"></script>
-<script src="src/js/domain/Card.test.js"></script>
-
-<!-- User interface -->
-<script src="src/js/ui/WebInterface.js"></script>
-
-<!-- Logic -->
-<script src="src/js/logic/GameController.js"></script>
-
-<!-- Launch -->
- <script>    
-    const gameController = new GameController();
-    gameController.launch();
- </script>
-
- <!-- Test files -->
-<script src="test/TestRunner.js"></script>
-<script>
-    const testRunner = new TestRunner();
-    testRunner.runTests();
-</script>

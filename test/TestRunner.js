@@ -19,8 +19,25 @@ class TestRunner {
         this.testCounter++;
     }
 
+    assertNotEquals(testName, expectation, result) {
+        let body = document.querySelector("#body");
+        let testResults = document.createElement("p");
+        if (expectation != result) {
+            testResults.innerText = this.testCounter + ". " 
+                + "Success: " + testName;
+        } else {
+            testResults.innerText = this.testCounter + ". " 
+                + "Fail: " + testName + " (comparison: " 
+                + expectation + ", actual: " + result + ")";
+        }
+        body.appendChild(testResults);
+        this.testCounter++;        
+    }
+
     runTests() {
-        this.assertEquals("Card value return", 5, this.testCard.value);
+        this.assertEquals("Card value return", 5, new Card(5).value);
         this.assertEquals("Strings", "hello", "hello");
+        this.assertEquals("Same cards same bg colors", new Card(20).backgroundColor, new Card(20).backgroundColor)
+        this.assertNotEquals("Diff cards diff bg colors", new Card(1).backgroundColor, new Card(2).backgroundColor);
     }
 }

@@ -1,3 +1,7 @@
+// if (typeof module === 'object') {
+//     module.exports = class Card;
+// }
+
 class Card {
     constructor(value) {
         this.value = value;

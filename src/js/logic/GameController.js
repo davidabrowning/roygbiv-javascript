@@ -138,7 +138,7 @@ class GameController {
 
         // Check for victory
         if (this.game.checkForVictory(playerId)) {
-            alert("ROYGBIV!");
+            this.webInterface.highlightHandForVictory(playerId);
         }
         
         // Advance turn

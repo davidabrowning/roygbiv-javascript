@@ -191,8 +191,15 @@ class GameController {
         this.game.players[playerId].cards[cardPosition] = drawnCard;
 
         // Check for victory
-        if (this.game.checkForVictory(playerId)) {
-            this.webInterface.highlightHandForVictory(playerId);
+        if (this.game.checkForVictory(playerId)) {   
+            this.webInterface.fadeDrawPilesForVictory();         
+            for (let i = 0; i < this.game.players.length; i++) {
+                if (i == playerId) {
+                    this.webInterface.highlightHandForVictory(i);
+                } else {
+                    this.webInterface.highlightHandForDefeat(i);
+                }
+            }
             return;
         }
 

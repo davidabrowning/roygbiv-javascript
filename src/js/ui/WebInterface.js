@@ -227,10 +227,22 @@ class WebInterface {
         playingArea.classList.remove("hand-active");
     }    
 
+    fadeDrawPilesForVictory() {
+        let drawDiscardPileContainer = document.querySelector("#container-draw-discard-piles");
+        drawDiscardPileContainer.style.opacity = 0.5;
+    }
+
     highlightHandForVictory(playerId) {
         let victoriousCards = document.querySelectorAll("#container-hand-" + playerId + " .card");
         victoriousCards.forEach(cardDiv => {
             cardDiv.style.border = "5px solid yellow";
         });
     }
+
+    highlightHandForDefeat(playerId) {
+        let defeatedCards = document.querySelectorAll("#container-hand-" + playerId + " .card");
+        defeatedCards.forEach(cardDiv => {
+            cardDiv.style.opacity = 0.5;
+        });
+    }    
 }

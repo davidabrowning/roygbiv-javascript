@@ -178,7 +178,9 @@ class GameController {
             let swapCardAPosition = cardPosition;
             let swapCardBPosition = player.initialSwapTargetCardPosition;
             player.swapCards(swapCardAPosition, swapCardBPosition);
+            this.webInterface.unhighlightPlayingArea(this.game.currentPlayerNum);
             this.game.advanceTurn();
+            this.webInterface.highlightPlayingArea(this.game.currentPlayerNum);
             this.webInterface.unhighlightCard(playerId, swapCardAPosition);
             this.webInterface.unhighlightCard(playerId, swapCardBPosition);
             this.webInterface.updateCard(playerId, swapCardAPosition, 

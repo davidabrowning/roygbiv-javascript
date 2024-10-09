@@ -32,6 +32,13 @@ class GameController {
         this.addEventListeners();
     }
 
+    startNewGame() {
+        document.querySelector("#playing-area").innerHTML = "";
+        this.webInterface = new WebInterface(this);
+        this.game = new Game();
+        this.launch();
+    }
+
     /**
      * Updates the web interface to show each current Card dealt to each
      * Player
@@ -168,8 +175,10 @@ class GameController {
         let drawnCard = null;                       // Stores the card the player draws
         let player = this.game.players[playerId];   // Stores the player who clicked
 
-        // If game is over, take no action
-        if (this.game.isGameOver()) { return; }
+        // If game is over, start a new game
+        if (this.game.isGameOver()) { 
+            this.startNewGame();
+        }
 
         // Don't do anything if not this player's turn
         if (this.game.currentPlayerNum != playerId) { return; }

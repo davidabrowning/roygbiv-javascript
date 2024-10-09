@@ -72,8 +72,7 @@ span.material-symbols-outlined {
     padding: 2rem;
 }
 .hand-active {
-    /* border: 3px solid lightgray; */
-    background-color: lightgray;
+    background-color: whitesmoke;
 }
 #draw-pile {
     margin-right: 5vw;

@@ -118,9 +118,9 @@ class WebInterface {
         }
     }
 
-    updateCard(playerId, cardPosition, cardValue, cardBackgroundColor, cardTextColor) {
+    updateCard(playerId, cardPosition, cardDisplayValue, cardBackgroundColor, cardTextColor) {
         let card = document.querySelector("#player-" + playerId + "-card-" + cardPosition);
-        card.innerText = cardValue;
+        card.innerText = cardDisplayValue;
         card.style.backgroundColor = cardBackgroundColor;
         card.style.color = cardTextColor;
     }
@@ -194,9 +194,9 @@ class WebInterface {
         card.classList.remove("selected-card");
     }
 
-    revealDrawPile(cardValue, cardBackgroundColor, cardTextColor) {
+    revealDrawPile(cardDisplayValue, cardBackgroundColor, cardTextColor) {
         let drawPileCard = document.querySelector("#draw-pile");
-        drawPileCard.innerText = cardValue;
+        drawPileCard.innerText = cardDisplayValue;
         drawPileCard.style.backgroundColor = cardBackgroundColor;
         drawPileCard.style.color = cardTextColor;
         drawPileCard.classList.add("selected-card");
@@ -210,9 +210,9 @@ class WebInterface {
         drawPileCard.classList.remove("selected-card");
     }
 
-    addToDiscardPile(cardValue, cardBackgroundColor, cardTextColor) {
+    addToDiscardPile(cardDisplayValue, cardBackgroundColor, cardTextColor) {
         let discardPileCard = document.querySelector("#discard-pile");
-        discardPileCard.innerText = cardValue;
+        discardPileCard.innerText = cardDisplayValue;
         discardPileCard.style.backgroundColor = cardBackgroundColor;
         discardPileCard.style.color = cardTextColor;
     }

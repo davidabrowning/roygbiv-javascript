@@ -41,7 +41,7 @@ class GameController {
             player.cards.forEach(card => {
                 let cardPosition = player.cards.indexOf(card);
                 this.webInterface.updateCard(player.id, cardPosition, 
-                    card.value, card.backgroundColor, card.textColor);
+                    card.displayValue, card.backgroundColor, card.textColor);
             })
         });
     }
@@ -91,7 +91,7 @@ class GameController {
         this.game.isDiscardPileSelected = false;
 
         let topDrawCard = this.game.getTopDrawPileCard();
-        this.webInterface.revealDrawPile(topDrawCard.value, topDrawCard.backgroundColor, topDrawCard.textColor);
+        this.webInterface.revealDrawPile(topDrawCard.displayValue, topDrawCard.backgroundColor, topDrawCard.textColor);
     }
 
     handleDiscardPileHover() {
@@ -184,11 +184,11 @@ class GameController {
             this.webInterface.unhighlightCard(playerId, swapCardAPosition);
             this.webInterface.unhighlightCard(playerId, swapCardBPosition);
             this.webInterface.updateCard(playerId, swapCardAPosition, 
-                player.cards[swapCardAPosition].value,
+                player.cards[swapCardAPosition].displayValue,
                 player.cards[swapCardAPosition].backgroundColor,
                 player.cards[swapCardAPosition].textColor);
             this.webInterface.updateCard(playerId, swapCardBPosition, 
-                player.cards[swapCardBPosition].value,
+                player.cards[swapCardBPosition].displayValue,
                 player.cards[swapCardBPosition].backgroundColor,
                 player.cards[swapCardBPosition].textColor);
         }
@@ -214,11 +214,11 @@ class GameController {
 
         // Discard player's current card
         let playerCurrentCard = this.game.players[playerId].cards[cardPosition];
-        this.webInterface.addToDiscardPile(playerCurrentCard.value, playerCurrentCard.backgroundColor, playerCurrentCard.textColor);
+        this.webInterface.addToDiscardPile(playerCurrentCard.displayValue, playerCurrentCard.backgroundColor, playerCurrentCard.textColor);
         this.game.discard(playerCurrentCard);
 
         // Add drawn card to player's hand
-        this.webInterface.updateCard(playerId, cardPosition, drawnCard.value, drawnCard.backgroundColor, drawnCard.textColor);
+        this.webInterface.updateCard(playerId, cardPosition, drawnCard.displayValue, drawnCard.backgroundColor, drawnCard.textColor);
         this.game.players[playerId].cards[cardPosition] = drawnCard;
 
         // Unhighlight current card

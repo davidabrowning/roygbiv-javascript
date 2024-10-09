@@ -5,6 +5,7 @@
 class Card {
     constructor(value) {
         this.value = value;
+        this.displayValue = this.value + 1;     // Value to display on the user interface
         this.numCardsInDeck = 60;
         this.backgroundColor = this.calculateBackgroundColor(this.numCardsInDeck);
         this.textColor = "black";

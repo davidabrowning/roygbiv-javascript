@@ -5,13 +5,13 @@ class GameController {
     }
 
     launch() {
-        // Populate instruction menu
+        // Display instruction menu
         this.webInterface.populateInstructionMenu();
 
-        // Create game board: add draw pile, discard pile
+        // Display draw pile, discard pile
         this.webInterface.addDrawAndDiscardPiles();
 
-        // Create game board: add players
+        // Display players' hand areas
         this.game.players.forEach(player => {
             this.webInterface.addPlayer(player.id, player.name);
         });
@@ -33,7 +33,8 @@ class GameController {
         this.game.players.forEach(player => {
             player.cards.forEach(card => {
                 let cardPosition = player.cards.indexOf(card);
-                this.webInterface.updateCard(player.id, cardPosition, card.value, card.backgroundColor, card.textColor);
+                this.webInterface.updateCard(player.id, cardPosition, 
+                    card.value, card.backgroundColor, card.textColor);
             })
         });
     }

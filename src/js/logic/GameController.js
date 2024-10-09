@@ -159,38 +159,8 @@ class GameController {
         // If this player has not yet done their initial swap
         if (player.hasDoneInitialSwap == false) {
 
-            // If this player has not yet set a target to swap with
-            if (player.initialSwapTargetCardPosition == -1) {
-                player.initialSwapTargetCardPosition = cardPosition;
-                this.webInterface.highlightCard(playerId, cardPosition);
-                return;
-            }
-
-            // If this player is clicking on the already selected card,
-            // then unselect it
-            if (player.initialSwapTargetCardPosition == cardPosition) {
-                player.removeSwapTarget();
-                this.webInterface.unhighlightCard(playerId, cardPosition);
-                return;
-            }
-
-            // Otherwise process the swap and update the interface
-            let swapCardAPosition = cardPosition;
-            let swapCardBPosition = player.initialSwapTargetCardPosition;
-            player.swapCards(swapCardAPosition, swapCardBPosition);
-            this.webInterface.unhighlightPlayingArea(this.game.currentPlayerNum);
-            this.game.advanceTurn();
-            this.webInterface.highlightPlayingArea(this.game.currentPlayerNum);
-            this.webInterface.unhighlightCard(playerId, swapCardAPosition);
-            this.webInterface.unhighlightCard(playerId, swapCardBPosition);
-            this.webInterface.updateCard(playerId, swapCardAPosition, 
-                player.cards[swapCardAPosition].displayValue,
-                player.cards[swapCardAPosition].backgroundColor,
-                player.cards[swapCardAPosition].textColor);
-            this.webInterface.updateCard(playerId, swapCardBPosition, 
-                player.cards[swapCardBPosition].displayValue,
-                player.cards[swapCardBPosition].backgroundColor,
-                player.cards[swapCardBPosition].textColor);
+            handleInitialSwapCardClick(playerId, cardPosition);
+            return;
         }
 
         // Don't do anything if draw/discare pile not selected
@@ -230,6 +200,49 @@ class GameController {
             return;
         }
 
+        // Advance the turn
+        this.advanceTurn();
+    }
+
+    handleInitialSwapCardClick(playerId, cardPosition) {
+        let player = this.game.players[playerId];
+
+        // If this player has not yet set a target to swap with,
+        // then set this card as the target
+        if (player.initialSwapTargetCardPosition == -1) {
+            player.initialSwapTargetCardPosition = cardPosition;
+            this.webInterface.highlightCard(playerId, cardPosition);
+            return;
+        }
+
+        // If this player is clicking on the already selected card,
+        // then unselect it
+        if (player.initialSwapTargetCardPosition == cardPosition) {
+            player.removeSwapTarget();
+            this.webInterface.unhighlightCard(playerId, cardPosition);
+            return;
+        }
+
+        // Otherwise process the swap and update the interface
+        let swapCardAPosition = cardPosition;
+        let swapCardBPosition = player.initialSwapTargetCardPosition;
+        player.swapCards(swapCardAPosition, swapCardBPosition);
+        this.webInterface.unhighlightPlayingArea(this.game.currentPlayerNum);
+        this.game.advanceTurn();
+        this.webInterface.highlightPlayingArea(this.game.currentPlayerNum);
+        this.webInterface.unhighlightCard(playerId, swapCardAPosition);
+        this.webInterface.unhighlightCard(playerId, swapCardBPosition);
+        this.webInterface.updateCard(playerId, swapCardAPosition, 
+            player.cards[swapCardAPosition].displayValue,
+            player.cards[swapCardAPosition].backgroundColor,
+            player.cards[swapCardAPosition].textColor);
+        this.webInterface.updateCard(playerId, swapCardBPosition, 
+            player.cards[swapCardBPosition].displayValue,
+            player.cards[swapCardBPosition].backgroundColor,
+            player.cards[swapCardBPosition].textColor);
+    }
+
+    advanceTurn() {
         // Unhighlight this player's hand
         this.webInterface.unhighlightPlayingArea(this.game.currentPlayerNum);
         

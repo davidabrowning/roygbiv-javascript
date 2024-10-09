@@ -43,6 +43,10 @@ class WebInterface {
         })
     }
 
+    /**
+     * Toggles the webpage between a display showing "how to play" instructions
+     * and the card game being played
+     */
     toggleInfoDisplay() {
         let infoDiv = document.querySelector("#instructions");
         let playingAreaDiv = document.querySelector("#playing-area");

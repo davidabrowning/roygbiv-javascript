@@ -33,9 +33,13 @@ class GameController {
     }
 
     startNewGame() {
-        document.querySelector("#playing-area").innerHTML = "";
         this.webInterface = new WebInterface(this);
         this.game = new Game();
+
+        // Reset player area (otherwise it would be duplicated)
+        this.webInterface.resetPlayingArea();
+
+        // Launch the new game
         this.launch();
     }
 

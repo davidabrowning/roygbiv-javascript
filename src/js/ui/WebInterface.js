@@ -245,4 +245,8 @@ class WebInterface {
             cardDiv.style.opacity = 0.5;
         });
     }    
+
+    resetPlayingArea() {
+        document.querySelector("#playing-area").innerHTML = "";
+    }
 }

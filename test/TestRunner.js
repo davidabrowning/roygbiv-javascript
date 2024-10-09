@@ -48,5 +48,8 @@ class TestRunner {
             this.testGame.discard(card);
         }
         this.assertNotEquals("Draw pile refills", 0, this.testGame.drawPile.length);
+      
+        this.assertEquals("", 1, 1);
+
     }
 }

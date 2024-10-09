@@ -3,6 +3,7 @@ class TestRunner {
         this.testCard = new Card(5);
         this.testCounter = 1;
         this.testGame = new Game();
+        this.testPlayer = new Player(0, "John");
     }
 
     assertEquals(testName, expectation, result) {
@@ -49,7 +50,12 @@ class TestRunner {
         }
         this.assertNotEquals("Draw pile refills", 0, this.testGame.drawPile.length);
       
-        this.assertEquals("", 1, 1);
+        this.assertEquals("Player defaults to not having switched", false, new Player(0, "John").hasDoneInitialSwap);
 
+        this.testPlayer = new Player(0, "John");
+        this.testPlayer.cards = [new Card(0), new Card(1), new Card(2), new Card(3)];
+        this.testPlayer.swapCards(0, 2);
+        this.assertEquals("Swap cards A", 1, this.testPlayer.cards[1].value);
+        this.assertEquals("Swap cards B", 2, this.testPlayer.cards[0].value);
     }
 }

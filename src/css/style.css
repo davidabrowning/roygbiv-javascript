@@ -4,27 +4,20 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 body {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    grid-template-rows: 1fr 15fr 1fr;
-    grid-template-columns: 1fr;
 }
 header {
     background-color: white;
     border-bottom: 1px solid lightgray;
-    align-content: center;
-    text-align: right;
     padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
 }
 main {
     align-content: center;
-}
-footer {
-    display: none;
-    background-color: white;
-    border-top: 1px solid lightgray;
-    align-content: center;
-    text-align: center;
+    flex: auto;
 }
 main div {
     padding: 0rem;
@@ -104,11 +97,6 @@ span.material-symbols-outlined {
 }
 header a {
     color: black;
-}
-footer a {
-    text-decoration: none;
-    color: black;
-    font-size: 0.75rem;
 }
 .hidden {
     display: none !important;

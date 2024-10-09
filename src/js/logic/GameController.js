@@ -163,6 +163,14 @@ class GameController {
                 return;
             }
 
+            // If this player is clicking on the already selected card,
+            // then unselect it
+            if (player.initialSwapTargetCardPosition == cardPosition) {
+                player.removeSwapTarget();
+                this.webInterface.unhighlightCard(playerId, cardPosition);
+                return;
+            }
+
             // Otherwise process the swap and update the interface
             let swapCardAPosition = cardPosition;
             let swapCardBPosition = player.initialSwapTargetCardPosition;

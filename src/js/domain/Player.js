@@ -22,4 +22,8 @@ class Player {
         this.hasDoneInitialSwap = true;
         this.initialSwapTargetCardPosition = -1;
     }
+
+    removeSwapTarget() {
+        this.initialSwapTargetCardPosition = -1;
+    }
 }

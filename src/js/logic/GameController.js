@@ -146,7 +146,7 @@ class GameController {
         // Discard player's current card
         let playerCurrentCard = this.game.players[playerId].cards[cardPosition];
         this.webInterface.addToDiscardPile(playerCurrentCard.value, playerCurrentCard.backgroundColor, playerCurrentCard.textColor);
-        this.game.discardPile.push(playerCurrentCard);
+        this.game.discard(playerCurrentCard);
 
         // Add drawn card to player's hand
         this.webInterface.updateCard(playerId, cardPosition, drawnCard.value, drawnCard.backgroundColor, drawnCard.textColor);

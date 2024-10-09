@@ -2,6 +2,7 @@ class TestRunner {
     constructor() {
         this.testCard = new Card(5);
         this.testCounter = 1;
+        this.testGame = new Game();
     }
 
     assertEquals(testName, expectation, result) {
@@ -39,5 +40,13 @@ class TestRunner {
         this.assertEquals("Strings", "hello", "hello");
         this.assertEquals("Same cards same bg colors", new Card(20).backgroundColor, new Card(20).backgroundColor)
         this.assertNotEquals("Diff cards diff bg colors", new Card(1).backgroundColor, new Card(2).backgroundColor);
+
+        this.testGame = new Game();
+        this.testGame.drawPile = this.testGame.createDeck(20);
+        for (let i = 0; i < 25; i++) {
+            let card = this.testGame.removeTopDrawPileCard();
+            this.testGame.discard(card);
+        }
+        this.assertNotEquals("Draw pile refills", 0, this.testGame.drawPile.length);
     }
 }

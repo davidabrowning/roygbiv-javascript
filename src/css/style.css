@@ -6,7 +6,6 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 header {
     background-color: white;
@@ -37,6 +36,7 @@ span.material-symbols-outlined {
 #instructions {
     border: 1px solid lightgray;
     width: 33vw;
+    min-width: 400px;   /* Handle narrow screens */
     margin: 2rem;
     padding: 2rem;
     padding-top: 1rem;
@@ -72,7 +72,6 @@ span.material-symbols-outlined {
     padding: 2rem;
 }
 .hand-active {
-    /* border: 3px solid lightgray; */
     background-color: lightgray;
 }
 #draw-pile {
@@ -88,6 +87,8 @@ span.material-symbols-outlined {
     border-radius: 0px;
     height: 12vw;
     width: 9vw;
+    max-height: 20vh;   /* Handles wide screens */
+    max-width: 15vh;    /* Handles wide screens */
     margin: 0.1rem;
     align-content: center;
     text-align: center;

@@ -3,7 +3,7 @@ class Game {
         this.currentTurn = 0;
         this.currentPlayerNum = 0;
         this.players = [new Player(0, "Player 1"), new Player(1, "Player 2")];
-        this.drawPile = this.createDeck(60);
+        this.drawPile = this.createDeck(new Card(0).numCardsInDeck);
         this.discardPile = [];
         this.isDrawPileSelected = false;
         this.isDiscardPileSelected = false;

@@ -3,14 +3,14 @@
 // }
 
 class Card {
-    MAX_NUM_CARDS = 60;
     constructor(value) {
         this.value = value;
-        this.backgroundColor = this.calculateBackgroundColor();
+        this.numCardsInDeck = 60;
+        this.backgroundColor = this.calculateBackgroundColor(this.numCardsInDeck);
         this.textColor = "black";
     }
 
-    calculateBackgroundColor() {
+    calculateBackgroundColor(deckSize) {
 
         // Holds a rainbow color range for the Cards
         let rgb = [
@@ -29,14 +29,13 @@ class Card {
                 // [155, 89, 182]
         ];
         
-        // Track Card(52) in max 60
-        let denominator = this.MAX_NUM_CARDS / (rgb.length - 1);    // 20
-        let remainder = this.value % denominator;                   // 12
+        let denominator = deckSize / (rgb.length - 1);
+        let remainder = this.value % denominator;
 
-        let baselineColorNum = (this.value - remainder) / denominator; // 2
-        let nextUpColorNum = baselineColorNum + 1;                     // 3
+        let baselineColorNum = (this.value - remainder) / denominator;
+        let nextUpColorNum = baselineColorNum + 1;
 
-        let colorMultiplier = remainder / denominator;  // 0
+        let colorMultiplier = remainder / denominator;
 
         let redBaselineColor = rgb[baselineColorNum][0];
         let redNextUpColor = rgb[nextUpColorNum][0];

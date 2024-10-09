@@ -59,6 +59,11 @@ class GameController {
     }
 
     handleDrawPileHover() {
+        // Don't hover if current player has not done initial swap yet
+        if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
+            return;
+        }
+
         this.webInterface.highlightDrawPile();
     }
 
@@ -82,7 +87,12 @@ class GameController {
     }
 
     handleDiscardPileHover() {
-        // If draw pile is selected, take no action
+        // Don't hover if current player has not done initial swap yet
+        if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
+            return;
+        }
+
+        // Don't hover if draw pile is selected
         if (this.game.isDrawPileSelected == true) { return; }
 
         if (this.game.discardPileHasCards()) {
@@ -98,7 +108,12 @@ class GameController {
     }
 
     handleDiscardPileClick() {
-        // If draw pile is selected, take no action
+        // Don't toggle if current player has not done initial swap yet
+        if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
+            return;
+        }
+
+        // Don't toggle if draw pile is selected
         if (this.game.isDrawPileSelected == true) { return; }
 
         this.game.toggleDiscardPileSelection();
@@ -109,20 +124,56 @@ class GameController {
         if (this.game.currentPlayerNum != playerId) { return; }
 
         // Don't hover if draw/discard not selected
-        if (this.game.isDrawPileSelected == false && this.game.isDiscardPileSelected == false) { return; }
+        // and player has already done initial swap
+        if (this.game.isDrawPileSelected == false 
+            && this.game.isDiscardPileSelected == false
+            && this.game.players[playerId].hasDoneInitialSwap == true) { return; }
 
         this.webInterface.highlightCard(playerId, cardPosition);
     }
 
     handleCardMouseout(playerId, cardPosition) {
+        // Don't unhighlight if this is the player's targeted swap card
+        if (cardPosition == this.game.players[playerId].initialSwapTargetCardPosition) {
+            return;
+        }
+
         this.webInterface.unhighlightCard(playerId, cardPosition);
     }
 
     handleCardClick(playerId, cardPosition) {
-        let drawnCard = null;   // Stores the card the player draws
+        let drawnCard = null;                       // Stores the card the player draws
+        let player = this.game.players[playerId];   // Stores the player who clicked
 
         // Don't do anything if not this player's turn
         if (this.game.currentPlayerNum != playerId) { return; }
+
+        // If this player has not yet done their initial swap
+        if (player.hasDoneInitialSwap == false) {
+
+            // If this player has not yet set a target to swap with
+            if (player.initialSwapTargetCardPosition == -1) {
+                player.initialSwapTargetCardPosition = cardPosition;
+                this.webInterface.highlightCard(playerId, cardPosition);
+                return;
+            }
+
+            // Otherwise process the swap and update the interface
+            let swapCardAPosition = cardPosition;
+            let swapCardBPosition = player.initialSwapTargetCardPosition;
+            player.swapCards(swapCardAPosition, swapCardBPosition);
+            this.game.advanceTurn();
+            this.webInterface.unhighlightCard(playerId, swapCardAPosition);
+            this.webInterface.unhighlightCard(playerId, swapCardBPosition);
+            this.webInterface.updateCard(playerId, swapCardAPosition, 
+                player.cards[swapCardAPosition].value,
+                player.cards[swapCardAPosition].backgroundColor,
+                player.cards[swapCardAPosition].textColor);
+            this.webInterface.updateCard(playerId, swapCardBPosition, 
+                player.cards[swapCardBPosition].value,
+                player.cards[swapCardBPosition].backgroundColor,
+                player.cards[swapCardBPosition].textColor);
+        }
 
         // Don't do anything if draw/discare pile not selected
         if (this.game.isDrawPileSelected == false && this.game.isDiscardPileSelected == false) { return; }

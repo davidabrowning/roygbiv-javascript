@@ -39,5 +39,7 @@ class TestRunner {
         this.assertEquals("Strings", "hello", "hello");
         this.assertEquals("Same cards same bg colors", new Card(20).backgroundColor, new Card(20).backgroundColor)
         this.assertNotEquals("Diff cards diff bg colors", new Card(1).backgroundColor, new Card(2).backgroundColor);
+
+        this.assertEquals("", 1, 1);
     }
 }

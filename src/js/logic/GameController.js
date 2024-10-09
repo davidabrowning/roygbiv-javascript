@@ -78,6 +78,11 @@ class GameController {
         // If draw pile is already revealed, take no action
         if (this.game.isDrawPileSelected) { return; }
 
+        // Don't reveal if current player has not done initial swap yet
+        if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
+            return;
+        }        
+
         // Unhighlight/unselect discard pile if it happens to be highlighted
         this.webInterface.unhighlightDiscardPile();
         this.game.isDiscardPileSelected = false;

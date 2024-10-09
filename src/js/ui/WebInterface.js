@@ -3,6 +3,9 @@ class WebInterface {
         this.gameController = gameController;
     }
 
+    /**
+     * Creates the "How to play" instructions display
+     */
     populateInstructionMenu() {
         let winningHand = [ 5, 18, 25, 28, 30, 35, 42, 47, 52, 57 ];
         let progressHand = [ 1, 38, 55, 8, 50, 17, 11, 53, 12, 44 ];

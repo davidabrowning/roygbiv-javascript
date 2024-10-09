@@ -16,16 +16,17 @@
         </header>
         <main>
             <div id="instructions-container">
-                <div id="instructions" class="hidden">
+                <div id="instructions">
                     <div id="btn-close-container">
                         <a href="#"><span id="btn-close" class="material-symbols-outlined">close</span></a>
                     </div>
                     <h1>How to play</h1>
                     <p class="subtitle">Sort your 10-card hand in ascending order.</p>
                     <ol>
-                        <li>Choose who plays as player 1 (top row) and player 2 (bottom row).</li>
-                        <li>Each player to swap the positions of two cards within their hand.</li>
+                        <li>Choose a player 1 (top row) and player 2 (bottom row).</li>
+                        <li>Each player swaps the positions of two cards within their hand.</li>
                         <li>Take turns drawing a card from either the draw or discard pile and replacing a card in your hand with it.</li>
+                        <li>When all of your cards are in ascending order you win!</li>
                     </ol>
                     <p class="subtitle">Example winning hand:</p>
                     <div id="example-winning-hand" class="hand"></div>
@@ -34,7 +35,7 @@
                     <p>Get your cards in order to claim victory and ROYGBIV!</p>
                 </div>
             </div>         
-            <div id="playing-area">
+            <div id="playing-area" class="hidden">
             </div>
         </main>
         <footer id="footer">

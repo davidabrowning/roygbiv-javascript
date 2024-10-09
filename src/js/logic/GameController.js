@@ -29,6 +29,10 @@ class GameController {
         this.addEventListeners();
     }
 
+    /**
+     * Updates the web interface to show each current Card dealt to each
+     * Player
+     */
     displayDealtCards() {
         this.game.players.forEach(player => {
             player.cards.forEach(card => {
@@ -39,6 +43,9 @@ class GameController {
         });
     }
 
+    /**
+     * Adds event listeners to web interface
+     */
     addEventListeners() {
         this.webInterface.addMenuListeners();
         this.webInterface.addDrawPileListeners();

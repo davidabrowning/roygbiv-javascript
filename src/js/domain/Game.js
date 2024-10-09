@@ -66,6 +66,9 @@ class Game {
         }
     }
 
+    /**
+     * Increases turn counter and toggles active Player
+     */
     advanceTurn() {
         this.currentTurn++;
         this.currentPlayerNum = this.currentTurn % this.players.length;
@@ -91,6 +94,11 @@ class Game {
         return cardArray;
     }
 
+    /**
+     * 
+     * @param {int} playerId ID of Player to check for victory conditions
+     * @returns boolean true if victorious, false otherwise
+     */
     checkForVictory(playerId) {
         let cards = this.players[playerId].cards;
         let allCardsInOrder = true;

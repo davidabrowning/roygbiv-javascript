@@ -41,6 +41,20 @@ class Game {
         return this.drawPile.shift();
     }
 
+    drawPileHasCards() {
+        if (this.drawPile.length > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    refillDrawPile() {
+        let topDiscardCard = this.removeTopDiscardPileCard();
+        this.drawPile = this.discardPile;
+        this.shuffle(this.drawPile);
+        this.discardPile = [topDiscardCard];
+    }
+
     getTopDiscardPileCard() {
         let maxIndex = this.discardPile.length;
         return this.discardPile[maxIndex - 1];
@@ -49,6 +63,13 @@ class Game {
     removeTopDiscardPileCard() {
         this.isDiscardPileSelected = false;
         return this.discardPile.pop();
+    }
+
+    discard(card) {
+        this.discardPile.push(card);
+        if (this.drawPileHasCards() == false) {
+            this.refillDrawPile();
+        }
     }
 
     discardPileHasCards() {

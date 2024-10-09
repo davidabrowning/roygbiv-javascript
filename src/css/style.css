@@ -6,7 +6,6 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
 }
 header {
     background-color: white;
@@ -88,6 +87,8 @@ span.material-symbols-outlined {
     border-radius: 0px;
     height: 12vw;
     width: 9vw;
+    max-height: 20vh;   /* Handles wide screens */
+    max-width: 16vh;    /* Handles wide screens */
     margin: 0.1rem;
     align-content: center;
     text-align: center;

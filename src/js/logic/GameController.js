@@ -156,28 +156,26 @@ class GameController {
         // Don't do anything if not this player's turn
         if (this.game.currentPlayerNum != playerId) { return; }
 
-        // If this player has not yet done their initial swap
+        // If this player has not yet done their initial swap,
+        // then handle an initial swap card click
         if (player.hasDoneInitialSwap == false) {
-
-            handleInitialSwapCardClick(playerId, cardPosition);
+            this.handleInitialSwapCardClick(playerId, cardPosition);
             return;
         }
 
         // Don't do anything if draw/discare pile not selected
         if (this.game.isDrawPileSelected == false && this.game.isDiscardPileSelected == false) { return; }
 
-        // If player has selected a card from the draw pile
+        // If player has selected a card from the draw pile,
+        // then unreveal the draw pile and set drawnCard
         if (this.game.isDrawPileSelected) {
-
-            // Unreveal the draw pile and set drawnCard
             this.webInterface.unrevealDrawPile();
             drawnCard = this.game.removeTopDrawPileCard();
         }
 
-        // If player has selected a card from the discard pile
+        // If player has selected a card from the discard pile,
+        // Unhighlight the discard pile and set drawnCard
         if (this.game.isDiscardPileSelected) {
-
-            // Unhighlight the discard pile and set drawnCard
             this.webInterface.unhighlightDiscardPile();
             drawnCard = this.game.removeTopDiscardPileCard();
         }
@@ -189,10 +187,8 @@ class GameController {
 
         // Add drawn card to player's hand
         this.webInterface.updateCard(playerId, cardPosition, drawnCard.displayValue, drawnCard.backgroundColor, drawnCard.textColor);
-        this.game.players[playerId].cards[cardPosition] = drawnCard;
-
-        // Unhighlight current card
         this.webInterface.unhighlightCard(playerId, cardPosition);
+        this.game.players[playerId].cards[cardPosition] = drawnCard;
 
         // Check for victory
         if (this.game.checkForVictory(playerId)) {

@@ -217,6 +217,16 @@ class WebInterface {
         discardPileCard.style.color = cardTextColor;
     }
 
+    highlightPlayingArea(playerId) {
+        let playingArea = document.querySelector("#container-hand-" + playerId);
+        playingArea.classList.add("hand-active");
+    }
+
+    unhighlightPlayingArea(playerId) {
+        let playingArea = document.querySelector("#container-hand-" + playerId);
+        playingArea.classList.remove("hand-active");
+    }    
+
     highlightHandForVictory(playerId) {
         let victoriousCards = document.querySelectorAll("#container-hand-" + playerId + " .card");
         victoriousCards.forEach(cardDiv => {

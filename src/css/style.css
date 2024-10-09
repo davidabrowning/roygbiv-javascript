@@ -76,7 +76,11 @@ span.material-symbols-outlined {
 .hand {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    padding: 2rem;
+}
+.hand-active {
+    /* border: 3px solid lightgray; */
+    background-color: lightgray;
 }
 #draw-pile {
     margin-right: 5vw;

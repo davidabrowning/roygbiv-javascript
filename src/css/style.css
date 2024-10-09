@@ -107,5 +107,5 @@ footer a {
     font-size: 0.75rem;
 }
 .hidden {
-    display: none;
+    display: none !important;
 }

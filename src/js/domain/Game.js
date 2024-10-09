@@ -73,6 +73,11 @@ class Game {
         this.currentPlayerNum = this.currentTurn % this.players.length;
     }
 
+    /**
+     * 
+     * @param {Card[]} cardArray the Cards to be shuffled
+     * @returns the shuffled Card array
+     */
     shuffle(cardArray) {
         let tempArray = [];
         cardArray.forEach(card => {

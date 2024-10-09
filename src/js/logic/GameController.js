@@ -17,7 +17,7 @@ class GameController {
         });
 
         // Shuffle cards
-        // this.game.shuffle();
+        this.game.shuffle(this.game.drawPile);
 
         // Deal cards
         this.game.dealCards();

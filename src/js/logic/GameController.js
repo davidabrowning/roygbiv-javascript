@@ -17,7 +17,7 @@ class GameController {
         });
 
         // Shuffle cards
-        this.game.shuffle(this.game.drawPile);
+        this.game.drawPile = this.game.shuffle(this.game.drawPile);
 
         // Deal cards
         this.game.dealCards();
@@ -31,6 +31,10 @@ class GameController {
         });
 
         // Add event listeners
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
         this.webInterface.addMenuListeners();
         this.webInterface.addDrawPileListeners();
         this.webInterface.addDiscardPileListeners();

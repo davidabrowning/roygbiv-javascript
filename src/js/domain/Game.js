@@ -22,8 +22,6 @@ class Game {
     }
 
     dealCards() {
-        this.drawPile = this.shuffle(this.drawPile);
-
         // Deal cards to players
         this.players.forEach(player => {
             for (let i = 0; i < 10; i++) {

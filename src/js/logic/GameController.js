@@ -16,6 +16,9 @@ class GameController {
             this.webInterface.addPlayer(player.id, player.name);
         });
 
+        // Shuffle cards
+        // this.game.shuffle();
+
         // Deal cards
         this.game.dealCards();
         

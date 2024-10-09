@@ -3,17 +3,25 @@ class Game {
         this.currentTurn = 0;
         this.currentPlayerNum = 0;
         this.players = [new Player(0, "Player 1"), new Player(1, "Player 2")];
-        this.drawPile = [];
+        this.drawPile = this.createDeck(60);
         this.discardPile = [];
         this.isDrawPileSelected = false;
         this.isDiscardPileSelected = false;
     }
 
-    dealCards() {
-        // Add cards to discard pile
-        for (let i = 0; i < 60; i++) {
-            this.drawPile.push(new Card(i));
+    /**
+     * @param {integer} numCards the number of Cards in the array
+     * @returns the array of Cards
+     */
+    createDeck(numCards) {
+        let deck = [];
+        for (let i = 0; i < numCards; i++) {
+            deck.push(new Card(i));
         }
+        return deck;
+    }
+
+    dealCards() {
         this.drawPile = this.shuffle(this.drawPile);
 
         // Deal cards to players

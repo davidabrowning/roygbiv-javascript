@@ -50,7 +50,7 @@ class TestRunner {
         }
         this.assertNotEquals("Draw pile refills", 0, this.testGame.drawPile.length);
       
-        this.assertEquals("", 1, 1);
+        
 
     }
 }

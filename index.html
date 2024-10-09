@@ -4,6 +4,7 @@
        <meta charset="utf-8">
        <title>ROYGBIV Card Game</title>
        <link rel="stylesheet" href="src/css/style.css">
+       <link rel="icon" type="favicon" href="src/img/favicon.ico">
 
        <!-- for menu icons -->
        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -46,7 +47,6 @@
         <script src="src/js/domain/Card.js"></script>
         <script src="src/js/domain/Player.js"></script>
         <script src="src/js/domain/Game.js"></script>
-        <script src="src/js/domain/Card.test.js"></script>
 
         <!-- User interface -->
         <script src="src/js/ui/WebInterface.js"></script>
@@ -58,13 +58,6 @@
         <script>    
             const gameController = new GameController();
             gameController.launch();
-        </script>
-
-        <!-- Test files -->
-        <script src="test/TestRunner.js"></script>
-        <script>
-            const testRunner = new TestRunner();
-            testRunner.runTests();
         </script>
 
         <!--------------- /JavaScript files --------------->

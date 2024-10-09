@@ -3,40 +3,40 @@
 // }
 
 class Card {
-    MAX_NUM_CARDS = 60;
     constructor(value) {
         this.value = value;
-        this.backgroundColor = this.calculateBackgroundColor();
+        this.numCardsInDeck = 60;
+        this.backgroundColor = this.calculateBackgroundColor(this.numCardsInDeck);
         this.textColor = "black";
     }
 
-    calculateBackgroundColor() {
+    calculateBackgroundColor(deckSize) {
 
         // Holds a rainbow color range for the Cards
         let rgb = [
-                [192, 57, 43],
-                [211, 84, 0],
-                [230, 126, 34],
-                [243, 156, 18],
-                [241, 196, 15],
-                // [46, 204, 113],
-                [39, 174, 96],
+                [192, 57, 43],          // red
+                [211, 84, 0],           // orange
+                // [230, 126, 34],
+                // [243, 156, 18],
+                [241, 196, 15],         // yellow
+                [46, 204, 113],
+                [39, 174, 96],          // green1
+                // [20, 90, 50],        // green2
                 // [22, 160, 133],
                 // [26, 188, 156],
-                [52, 152, 219],
-                [41, 128, 185],
-                [142, 68, 173],
+                [52, 152, 219],         // light blue
+                [41, 128, 185],         // blue
+                [142, 68, 173],         // purple
                 // [155, 89, 182]
         ];
         
-        // Track Card(52) in max 60
-        let denominator = this.MAX_NUM_CARDS / (rgb.length - 1);    // 20
-        let remainder = this.value % denominator;                   // 12
+        let denominator = deckSize / (rgb.length - 1);
+        let remainder = this.value % denominator;
 
-        let baselineColorNum = (this.value - remainder) / denominator; // 2
-        let nextUpColorNum = baselineColorNum + 1;                     // 3
+        let baselineColorNum = (this.value - remainder) / denominator;
+        let nextUpColorNum = baselineColorNum + 1;
 
-        let colorMultiplier = remainder / denominator;  // 0
+        let colorMultiplier = remainder / denominator;
 
         let redBaselineColor = rgb[baselineColorNum][0];
         let redNextUpColor = rgb[nextUpColorNum][0];

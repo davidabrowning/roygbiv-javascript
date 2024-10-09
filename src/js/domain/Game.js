@@ -3,19 +3,25 @@ class Game {
         this.currentTurn = 0;
         this.currentPlayerNum = 0;
         this.players = [new Player(0, "Player 1"), new Player(1, "Player 2")];
-        this.drawPile = [];
+        this.drawPile = this.createDeck(60);
         this.discardPile = [];
         this.isDrawPileSelected = false;
         this.isDiscardPileSelected = false;
     }
 
-    dealCards() {
-        // Add cards to discard pile
-        for (let i = 0; i < 60; i++) {
-            this.drawPile.push(new Card(i));
+    /**
+     * @param {integer} numCards the number of Cards in the array
+     * @returns the array of Cards
+     */
+    createDeck(numCards) {
+        let deck = [];
+        for (let i = 0; i < numCards; i++) {
+            deck.push(new Card(i));
         }
-        this.drawPile = this.shuffle(this.drawPile);
+        return deck;
+    }
 
+    dealCards() {
         // Deal cards to players
         this.players.forEach(player => {
             for (let i = 0; i < 10; i++) {
@@ -60,11 +66,19 @@ class Game {
         }
     }
 
+    /**
+     * Increases turn counter and toggles active Player
+     */
     advanceTurn() {
         this.currentTurn++;
         this.currentPlayerNum = this.currentTurn % this.players.length;
     }
 
+    /**
+     * 
+     * @param {Card[]} cardArray the Cards to be shuffled
+     * @returns the shuffled Card array
+     */
     shuffle(cardArray) {
         let tempArray = [];
         cardArray.forEach(card => {
@@ -80,6 +94,11 @@ class Game {
         return cardArray;
     }
 
+    /**
+     * 
+     * @param {int} playerId ID of Player to check for victory conditions
+     * @returns boolean true if victorious, false otherwise
+     */
     checkForVictory(playerId) {
         let cards = this.players[playerId].cards;
         let allCardsInOrder = true;

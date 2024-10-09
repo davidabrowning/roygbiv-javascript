@@ -5,29 +5,48 @@ class GameController {
     }
 
     launch() {
-        // Populate instruction menu
+        // Display instruction menu
         this.webInterface.populateInstructionMenu();
 
-        // Create game board: add draw pile, discard pile
+        // Display draw pile, discard pile
         this.webInterface.addDrawAndDiscardPiles();
 
-        // Create game board: add players
+        // Display players' hand areas
         this.game.players.forEach(player => {
             this.webInterface.addPlayer(player.id, player.name);
         });
+
+        // Shuffle cards
+        this.game.drawPile = this.game.shuffle(this.game.drawPile);
 
         // Deal cards
         this.game.dealCards();
         
         // Display cards
+        this.displayDealtCards();
+
+        // Add event listeners
+        this.addEventListeners();
+    }
+
+    /**
+     * Updates the web interface to show each current Card dealt to each
+     * Player
+     */
+    displayDealtCards() {
         this.game.players.forEach(player => {
             player.cards.forEach(card => {
                 let cardPosition = player.cards.indexOf(card);
-                this.webInterface.updateCard(player.id, cardPosition, card.value, card.backgroundColor, card.textColor);
+                this.webInterface.updateCard(player.id, cardPosition, 
+                    card.value, card.backgroundColor, card.textColor);
             })
         });
+    }
 
-        // Add event listeners
+    /**
+     * Adds event listeners to web interface
+     */
+    addEventListeners() {
         this.webInterface.addMenuListeners();
         this.webInterface.addDrawPileListeners();
         this.webInterface.addDiscardPileListeners();

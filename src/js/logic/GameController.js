@@ -62,6 +62,9 @@ class GameController {
     }
 
     handleDrawPileHover() {
+        // If game is over, take no action
+        if (this.game.isGameOver()) { return; }
+
         // Don't hover if current player has not done initial swap yet
         if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
             return;
@@ -78,6 +81,9 @@ class GameController {
     }
 
     handleDrawPileClick() {
+        // If game is over, take no action
+        if (this.game.isGameOver()) { return; }
+
         // If draw pile is already revealed, take no action
         if (this.game.isDrawPileSelected) { return; }
 
@@ -95,6 +101,9 @@ class GameController {
     }
 
     handleDiscardPileHover() {
+        // If game is over, take no action
+        if (this.game.isGameOver()) { return; }
+
         // Don't hover if current player has not done initial swap yet
         if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
             return;
@@ -116,6 +125,9 @@ class GameController {
     }
 
     handleDiscardPileClick() {
+        // If game is over, take no action
+        if (this.game.isGameOver()) { return; }
+
         // Don't toggle if current player has not done initial swap yet
         if (this.game.players[this.game.currentPlayerNum].hasDoneInitialSwap == false) {
             return;
@@ -128,6 +140,9 @@ class GameController {
     }
 
     handleCardHover(playerId, cardPosition) {
+        // If game is over, take no action
+        if (this.game.isGameOver()) { return; }
+
         // Don't hover if not this player's turn
         if (this.game.currentPlayerNum != playerId) { return; }
 
@@ -152,6 +167,9 @@ class GameController {
     handleCardClick(playerId, cardPosition) {
         let drawnCard = null;                       // Stores the card the player draws
         let player = this.game.players[playerId];   // Stores the player who clicked
+
+        // If game is over, take no action
+        if (this.game.isGameOver()) { return; }
 
         // Don't do anything if not this player's turn
         if (this.game.currentPlayerNum != playerId) { return; }
